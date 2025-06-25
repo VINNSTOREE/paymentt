@@ -1,142 +1,165 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VINNN CRASHER</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VINN CRASHER🔥</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
+      font-family: 'Courier New', monospace;
+      background: radial-gradient(circle at top, #2b1907, #4b2e0e, #1a0e02);
       margin: 0;
-      background-color: #000;
-      color: #0ff;
-      font-family: 'Courier New', Courier, monospace;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff8dc;
       text-align: center;
-      padding: 40px 20px;
-      overflow: hidden;
-      position: relative;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 90%;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px gold;
+      border: 1px solid gold;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      border: 2px solid gold;
+      box-shadow: 0 0 15px gold;
+      object-fit: cover;
     }
 
     h1 {
-      font-size: 28px;
-      text-shadow: 0 0 8px #0ff;
-      margin-bottom: 30px;
+      font-size: 2rem;
+      margin: 10px 0 20px;
+      color: gold;
+      text-shadow: 0 0 10px gold;
+    }
+
+    .developer-name {
+      font-size: 1rem;
+      color: #ffeaa7;
+      margin-bottom: 20px;
     }
 
     input {
       background-color: #111;
-      color: #0ff;
-      border: 1px solid #0ff;
-      padding: 10px;
+      color: gold;
+      border: 1px solid gold;
+      padding: 12px;
       width: 80%;
       max-width: 300px;
-      border-radius: 4px;
+      border-radius: 8px;
       outline: none;
       text-align: center;
       margin-bottom: 20px;
     }
 
-    .crash-btn {
-      background-color: #111;
-      color: #0ff;
-      border: 2px solid #0ff;
-      padding: 12px 24px;
-      margin: 10px 0;
-      cursor: pointer;
-      width: 80%;
-      max-width: 300px;
-      font-size: 14px;
-      text-shadow: 0 0 6px #0ff;
-      border-radius: 6px;
-      transition: all 0.3s ease;
+    .crash-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
     }
 
-    .crash-btn:hover {
-      background-color: #0ff;
+    .crash-buttons button {
+      text-decoration: none;
+      background: linear-gradient(90deg, #ffce00, #ffb700);
       color: #000;
-      box-shadow: 0 0 12px #0ff;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #ffd700;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .loading-text {
-      color: #0ff;
-      font-family: 'Courier New', Courier, monospace;
-      margin-top: 20px;
-      text-shadow: 0 0 5px #0ff;
-      animation: blink 1s step-start infinite;
+    .crash-buttons button:hover {
+      background: gold;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px gold, 0 0 40px gold;
     }
 
-    .success-text {
-      margin-top: 20px;
-      font-size: 16px;
-      color: #0f0;
-      font-family: 'Courier New', Courier, monospace;
-      text-shadow: 0 0 8px #0f0;
-      animation: fadeIn 0.8s ease-out forwards;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0.5; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Background glitch effect */
-    .glitch {
+    .music-btn {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: repeating-linear-gradient(180deg, rgba(0,255,255,0.02), rgba(0,255,255,0.02) 2px, transparent 2px, transparent 4px);
-      animation: scan 4s linear infinite;
-      pointer-events: none;
+      top: 20px;
+      right: 20px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: gold;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      box-shadow: 0 0 10px gold;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    @keyframes scan {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
+    .music-btn:hover {
+      background: #ffd700;
+      box-shadow: 0 0 20px gold;
+    }
+
+    .info-text {
+      margin-top: 15px;
+      font-size: 14px;
+      text-shadow: 0 0 10px gold;
     }
   </style>
 </head>
 <body>
-  <h1>VINNN CRASHER</h1>
-  <input id="target" placeholder="Masukkan Nomor Target" /><br/>
-  <button class="crash-btn" onclick="sendCrash('Crash Android')">Crash Android</button><br/>
-  <button class="crash-btn" onclick="sendCrash('Crash iPhone')">Crash iPhone</button><br/>
-  <button class="crash-btn" onclick="sendCrash('Delay Mention')">Delay Mention</button><br/>
-  <div id="info-box"></div>
+  <!-- Tombol Play Musik -->
+  <button class="music-btn" onclick="playMusic()">🔊 Musik</button>
+  <audio id="bgMusic" src="musik.mp3" loop></audio>
 
-  <!-- Background animation layer -->
-  <div class="glitch"></div>
+  <div class="container">
+    <img src="-media-/logo.png" alt="Logo" class="logo" />
+    <h1>VINN CRASHER</h1>
+    <div class="developer-name">BY VINN STORE</div>
 
-  <!-- Audio hacker cyberpunk style -->
-  <audio id="bgmusic" autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2023/01/11/audio_4f304d1856.mp3" type="audio/mpeg">
-    Browser tidak mendukung audio.
-  </audio>
+    <p>Masukkan Nomor Target di Bawah:</p>
+    <input id="target" placeholder="08xxxx / 62xxxx" />
+
+    <div class="crash-buttons">
+      <button onclick="sendCrash('Crash Android')">🤖 Crash Android</button>
+      <button onclick="sendCrash('Crash iPhone')">🍎 Crash iPhone</button>
+      <button onclick="sendCrash('Delay Mention')">⏱️ Delay Mention</button>
+    </div>
+
+    <div class="info-text" id="info-box"></div>
+  </div>
 
   <script>
+    function playMusic() {
+      const audio = document.getElementById("bgMusic");
+      audio.play();
+    }
+
     function sendCrash(type) {
-      const input = document.getElementById("target");
-      const number = input.value.trim();
+      const target = document.getElementById("target").value.trim();
       const infoBox = document.getElementById("info-box");
 
-      if (!number) {
-        alert("Masukkan nomor target terlebih dahulu.");
+      if (!target) {
+        infoBox.innerHTML = "<span style='color: red;'>⚠️ Nomor target belum diisi!</span>";
         return;
       }
 
-      const buttons = document.querySelectorAll(".crash-btn");
-      buttons.forEach(btn => btn.disabled = true);
-
-      infoBox.innerHTML = "<div class='loading-text'>Sending " + type + " to " + number + "...</div>";
-
+      infoBox.innerHTML = "🚀 Mengirim " + type + " ke " + target + "...";
       setTimeout(() => {
-        infoBox.innerHTML = "<div class='success-text'>✔️ SUCCESSFULLY SENT TO: " + number + "</div>";
-        buttons.forEach(btn => btn.disabled = false);
-      }, 3000);
+        infoBox.innerHTML = "✅ <span style='color: #00ff00;'>Berhasil dikirim ke " + target + "</span>";
+      }, 2000);
     }
   </script>
 </body>
