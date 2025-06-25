@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🔥 VINN CRASHER</title>
+  <title>🔥 VINN CRASHER WHATSAPP</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
@@ -122,6 +122,10 @@
       color: #ff9999;
       text-shadow: 0 0 5px red;
     }
+
+    .hidden {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -131,16 +135,16 @@
 
   <div class="container">
     <img src="-media-/logo.png" alt="Logo" class="logo" />
-    <h1>🔥 VINN CRASHER</h1>
+    <h1>🔥 VINN CRASHER WHATSAPP</h1>
     <div class="developer-name">POWERED BY VINN STORE</div>
 
     <p>Masukkan Nomor Target:</p>
     <input id="target" placeholder="08xxxx / 62xxxx" />
 
     <div class="crash-buttons">
-      <button onclick="sendCrash('Crash Android')">🤖 Crash Android</button>
-      <button onclick="sendCrash('Crash iPhone')">🍎 Crash iPhone</button>
-      <button onclick="sendCrash('Delay Mention')">⏱️ Delay Mention</button>
+      <button onclick="sendCrash(this, 'Crash Android')">🤖 Crash Android</button>
+      <button onclick="sendCrash(this, 'Crash iPhone')">🍎 Crash iPhone</button>
+      <button onclick="sendCrash(this, 'Delay Mention')">⏱️ Delay Mention</button>
     </div>
 
     <div class="info-text" id="info-box"></div>
@@ -152,7 +156,7 @@
       audio.play();
     }
 
-    function sendCrash(type) {
+    function sendCrash(button, type) {
       const target = document.getElementById("target").value.trim();
       const infoBox = document.getElementById("info-box");
 
@@ -161,10 +165,16 @@
         return;
       }
 
+      // Sembunyikan tombol sementara
+      const allButtons = document.querySelectorAll('.crash-buttons button');
+      allButtons.forEach(btn => btn.classList.add('hidden'));
+
       infoBox.innerHTML = "🚀 Mengirim " + type + " ke " + target + "...";
+
       setTimeout(() => {
-        infoBox.innerHTML = "✅ <span style='color: #00ff00;'>Sukses dikirim ke " + target + "</span>";
-      }, 2000);
+        infoBox.innerHTML = "✅ <span style='color: #00ff00;'>" + type + " berhasil dikirim ke " + target + "</span>";
+        allButtons.forEach(btn => btn.classList.remove('hidden'));
+      }, 3000); // 3 detik
     }
   </script>
 </body>
