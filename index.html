@@ -1,108 +1,143 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KKS VINN CRASHER PROJECT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <title>VINNN CRASHER</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Share Tech Mono', monospace;
-      background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
-      color: #00ffe0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00ffe0;
+      background-color: #000;
+      color: #0ff;
+      font-family: 'Courier New', Courier, monospace;
       text-align: center;
-      width: 320px;
+      padding: 40px 20px;
+      overflow: hidden;
+      position: relative;
     }
+
     h1 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-      color: #00ffe0;
+      font-size: 28px;
+      text-shadow: 0 0 8px #0ff;
+      margin-bottom: 30px;
     }
-    input[type="text"] {
-      width: 80%;
+
+    input {
+      background-color: #111;
+      color: #0ff;
+      border: 1px solid #0ff;
       padding: 10px;
-      background: #111;
-      border: 1px solid #00ffe0;
-      border-radius: 5px;
-      color: #00ffe0;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 4px;
+      outline: none;
       text-align: center;
       margin-bottom: 20px;
     }
-    .btn {
-      display: block;
-      width: 100%;
-      margin: 8px 0;
-      padding: 10px;
-      border: none;
-      background: #001f1f;
-      color: #00ffe0;
-      border-radius: 5px;
+
+    .crash-btn {
+      background-color: #111;
+      color: #0ff;
+      border: 2px solid #0ff;
+      padding: 12px 24px;
+      margin: 10px 0;
       cursor: pointer;
-      box-shadow: 0 0 10px #00ffe0;
-      transition: 0.3s;
+      width: 80%;
+      max-width: 300px;
+      font-size: 14px;
+      text-shadow: 0 0 6px #0ff;
+      border-radius: 6px;
+      transition: all 0.3s ease;
     }
-    .btn:hover {
-      background-color: #00ffe0;
-      color: #001f1f;
-    }
-    .status {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      color: #fff;
-    }
-    .info {
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: #ff6666;
-    }
-    .footer {
-      margin-top: 20px;
-      font-size: 0.7rem;
-      color: #555;
-    }
-    .logout, .support {
-      position: absolute;
-      font-size: 0.8rem;
-      top: 10px;
-      padding: 5px 10px;
-      border-radius: 4px;
-      text-decoration: none;
-      color: #fff;
-    }
-    .logout {
-      right: 10px;
-      background: #ff0033;
-    }
-    .support {
-      bottom: 10px;
-      right: 10px;
-      background: #00ffe0;
+
+    .crash-btn:hover {
+      background-color: #0ff;
       color: #000;
+      box-shadow: 0 0 12px #0ff;
+    }
+
+    .loading-text {
+      color: #0ff;
+      font-family: 'Courier New', Courier, monospace;
+      margin-top: 20px;
+      text-shadow: 0 0 5px #0ff;
+      animation: blink 1s step-start infinite;
+    }
+
+    .success-text {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #0f0;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 8px #0f0;
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Background glitch effect */
+    .glitch {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: repeating-linear-gradient(180deg, rgba(0,255,255,0.02), rgba(0,255,255,0.02) 2px, transparent 2px, transparent 4px);
+      animation: scan 4s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
     }
   </style>
 </head>
 <body>
-  <a class="logout" href="#">Logout</a>
-  <div class="container">
-    <h1>KKS VINN CRASHER PROJECT</h1>
-    <input type="text" placeholder="Masukkan Nomor Target" />
-    <button class="btn">Crash Android</button>
-    <button class="btn">Crash iPhone</button>
-    <button class="btn">Delay Mention</button>
-    <div class="status">Status: <strong>Server Aktif</strong></div>
-    <div class="info">Info: Selamat datang, Selaxaja!</div>
-    <div class="footer">&copy; KKS VINN CRASHER PROJECT</div>
-  </div>
-  <a class="support" href="#">Support</a>
+  <h1>VINNN CRASHER</h1>
+  <input id="target" placeholder="Masukkan Nomor Target" /><br/>
+  <button class="crash-btn" onclick="sendCrash('Crash Android')">Crash Android</button><br/>
+  <button class="crash-btn" onclick="sendCrash('Crash iPhone')">Crash iPhone</button><br/>
+  <button class="crash-btn" onclick="sendCrash('Delay Mention')">Delay Mention</button><br/>
+  <div id="info-box"></div>
+
+  <!-- Background animation layer -->
+  <div class="glitch"></div>
+
+  <!-- Audio hacker cyberpunk style -->
+  <audio id="bgmusic" autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/01/11/audio_4f304d1856.mp3" type="audio/mpeg">
+    Browser tidak mendukung audio.
+  </audio>
+
+  <script>
+    function sendCrash(type) {
+      const input = document.getElementById("target");
+      const number = input.value.trim();
+      const infoBox = document.getElementById("info-box");
+
+      if (!number) {
+        alert("Masukkan nomor target terlebih dahulu.");
+        return;
+      }
+
+      const buttons = document.querySelectorAll(".crash-btn");
+      buttons.forEach(btn => btn.disabled = true);
+
+      infoBox.innerHTML = "<div class='loading-text'>Sending " + type + " to " + number + "...</div>";
+
+      setTimeout(() => {
+        infoBox.innerHTML = "<div class='success-text'>✔️ SUCCESSFULLY SENT TO: " + number + "</div>";
+        buttons.forEach(btn => btn.disabled = false);
+      }, 3000);
+    }
+  </script>
 </body>
 </html>
