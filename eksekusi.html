@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VINN CRASHER - Eksekusi</title>
+  <style>
+    body {
+      background: #0a0a0a;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      color: #ff1a1a;
+      text-shadow: 0 0 15px #ff1a1a;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 300px;
+      padding: 15px;
+      border: none;
+      background: #1a1a1a;
+      border-radius: 12px;
+      color: white;
+      box-shadow: 0 0 10px #ff1a1a;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 15px 30px;
+      background: linear-gradient(to right, #ff1a1a, #ff4d4d);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 16px;
+      box-shadow: 0 0 15px red;
+      cursor: pointer;
+    }
+
+    button:hover {
+      box-shadow: 0 0 25px red;
+    }
+
+    .loading {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #ff1a1a;
+      text-shadow: 0 0 5px #ff1a1a;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="methodTitle">Eksekusi: [Metode]</h1>
+  <input type="text" id="targetNumber" placeholder="Masukkan Nomor Target" /><br />
+  <button onclick="kirimAttack()">🔥 Kirim Attack</button>
+  <div class="loading" id="loadingText">Mengirim bug ke target... 🔥</div>
+
+  <script>
+    const method = localStorage.getItem("selectedMethod") || "Tidak Diketahui";
+    document.getElementById("methodTitle").innerText = `Eksekusi: ${method}`;
+
+    function kirimAttack() {
+      const number = document.getElementById("targetNumber").value.trim();
+      if (!number) return alert("❌ Masukkan nomor target dulu!");
+
+      document.getElementById("loadingText").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("loadingText").innerText = `✅ Attack dikirim ke ${number} dengan metode ${method}`;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VINN CRASHER - Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      overflow: hidden;
+      color: white;
+    }
+
+    .login-box {
+      width: 350px;
+      margin: 100px auto;
+      background: rgba(20, 20, 20, 0.9);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 0 20px #0ff;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      color: #00ffff;
+      text-shadow: 0 0 10px #0ff;
+      margin-bottom: 30px;
+    }
+
+    .login-box input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      background: #111;
+      color: #0ff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    .login-box button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(to right, #00f0ff, #a000ff);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 20px #0ff;
+      margin-top: 10px;
+    }
+
+    .login-box button:hover {
+      background: linear-gradient(to right, #a000ff, #00f0ff);
+    }
+
+    .login-box a {
+      display: block;
+      margin-top: 20px;
+      color: cyan;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Darkness Api Bug</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">🔐 Login</button>
+    <a href="https://wa.me/628xxxxxx" target="_blank">Buy Akses Chat: 628xxxxxx</a>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === "Vinzzk" && pass === "Gacor") {
+        window.location.href = "menu.html";
+      } else {
+        alert("❌ Username atau password salah!");
+      }
+    }
+  </script>
+</body>
+</html>

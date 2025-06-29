@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VINN CRASHER - Menu</title>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: 'Arial';
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    h1 {
+      color: #ff1a1a;
+      text-shadow: 0 0 10px red;
+      margin-bottom: 40px;
+    }
+
+    .menu-button {
+      background: #1a1a1a;
+      border: 2px solid #ff1a1a;
+      color: #ff1a1a;
+      padding: 15px 30px;
+      margin: 10px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 0 10px red;
+    }
+
+    .menu-button:hover {
+      background: #ff1a1a;
+      color: white;
+      box-shadow: 0 0 20px #ff1a1a;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔥 PILIH METODE BUG 🔥</h1>
+
+  <button class="menu-button" onclick="selectMethod('Crash Android')">Crash Android</button>
+  <button class="menu-button" onclick="selectMethod('Crash iPhone')">Crash iPhone</button>
+  <button class="menu-button" onclick="selectMethod('Crash UI')">Crash UI</button>
+
+  <script>
+    function selectMethod(method) {
+      localStorage.setItem("selectedMethod", method);
+      window.location.href = "eksekusi.html";
+    }
+  </script>
+</body>
+</html>
