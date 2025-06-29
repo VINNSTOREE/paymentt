@@ -1,181 +1,106 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🔥 VINN CRASHER WHATSAPP</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darkness API Bug</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
-
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: radial-gradient(circle at center, #120000, #1a0000, #000);
+    * {
       margin: 0;
       padding: 0;
-      height: 100vh;
+      font-family: 'Orbitron', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background: #000;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffcccc;
-      text-align: center;
+      height: 100vh;
+      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
       overflow: hidden;
     }
-
-    .container {
-      max-width: 500px;
-      width: 90%;
-      background: rgba(50, 0, 0, 0.2);
-      padding: 30px 20px;
-      border-radius: 18px;
-      box-shadow: 0 0 30px red;
-      border: 1px solid crimson;
-      backdrop-filter: blur(8px);
-    }
-
-    .logo {
-      width: 90px;
-      height: 90px;
-      margin-bottom: 15px;
-      border-radius: 50%;
-      border: 2px solid crimson;
-      box-shadow: 0 0 20px crimson;
-      object-fit: cover;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      color: #ff3c3c;
-      text-shadow: 0 0 8px #ff4d4d, 0 0 20px red;
-      margin: 10px 0 15px;
-    }
-
-    .developer-name {
-      font-size: 0.95rem;
-      color: #ffaaaa;
-      margin-bottom: 25px;
-      text-shadow: 0 0 5px #ff8888;
-    }
-
-    input {
-      background-color: #1a0000;
-      color: #ff6666;
-      border: 1px solid #ff4d4d;
-      padding: 12px;
-      width: 80%;
-      max-width: 300px;
-      border-radius: 8px;
-      outline: none;
+    .login-box, .attack-box {
+      background: rgba(20, 20, 20, 0.9);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #0ff;
       text-align: center;
+    }
+    h1 {
+      font-size: 24px;
       margin-bottom: 20px;
-      box-shadow: 0 0 10px #ff1a1a;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
     }
-
-    .crash-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .crash-buttons button {
-      background: linear-gradient(90deg, #ff1a1a, #cc0000);
-      color: #fff;
-      padding: 14px;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 1rem;
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 80%;
       border: none;
-      cursor: pointer;
-      box-shadow: 0 0 10px #ff1a1a;
-      transition: 0.3s;
+      border-radius: 8px;
+      background: #111;
+      color: #0ff;
+      outline: none;
     }
-
-    .crash-buttons button:hover {
-      background: #ff4d4d;
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #ff1a1a, 0 0 40px #ff1a1a;
-    }
-
-    .music-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 10px 14px;
+    button {
+      margin-top: 20px;
+      padding: 10px 30px;
+      background: linear-gradient(45deg, #0ff, #a0f);
+      border: none;
       border-radius: 10px;
-      background: crimson;
       color: #fff;
       font-weight: bold;
-      border: none;
-      box-shadow: 0 0 15px crimson;
       cursor: pointer;
-      transition: 0.3s;
+      box-shadow: 0 0 10px #0ff;
     }
-
-    .music-btn:hover {
-      background: #ff4d4d;
-      box-shadow: 0 0 25px red;
+    .menu-btns button {
+      display: block;
+      margin: 10px auto;
+      width: 80%;
     }
-
-    .info-text {
-      margin-top: 18px;
-      font-size: 14px;
-      color: #ff9999;
-      text-shadow: 0 0 5px red;
-    }
-
-    .hidden {
-      display: none !important;
+    #buyText {
+      margin-top: 20px;
+      color: #ccc;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
-  <!-- Tombol Musik -->
-  <button class="music-btn" onclick="playMusic()">🔊 Musik</button>
-  <audio id="bgMusic" src="musik.mp3" loop></audio>
-
-  <div class="container">
-    <img src="logo.png" alt="Logo" class="logo" />
-    <h1>🔥 VINN CRASHER WHATSAPP</h1>
-    <div class="developer-name">POWERED BY VINN STORE</div>
-
-    <p>Masukkan Nomor Target:</p>
-    <input id="target" placeholder="08xxxx / 62xxxx" />
-
-    <div class="crash-buttons">
-      <button onclick="sendCrash(this, 'Crash Android')">🤖 Crash Android</button>
-      <button onclick="sendCrash(this, 'Crash iPhone')">🍎 Crash iPhone</button>
-      <button onclick="sendCrash(this, 'Delay Mention')">⏱️ Delay Mention</button>
+  <div class="login-box" id="loginBox">
+    <h1>Darkness Api Bug</h1>
+    <p>Login</p>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <br />
+    <button onclick="login()">🔐 Login</button>
+    <div id="buyText">Buy Akses Chat: <span style="color:#0ff">@kontak_admin</span></div>
+  </div>  <div class="attack-box" id="attackBox" style="display: none;">
+    <h1>⚡ Attack Menu ⚡</h1>
+    <div class="menu-btns">
+      <button>💥 Crash Android</button>
+      <button>📱 Crash iPhone</button>
+      <button>🧨 Crash UI</button>
+      <button>🔥 Spam Emoji</button>
+      <button>❄️ Freeze Chat</button>
+      <button onclick="logout()">🔙 Back</button>
     </div>
-
-    <div class="info-text" id="info-box"></div>
-  </div>
-
-  <script>
-    function playMusic() {
-      const audio = document.getElementById("bgMusic");
-      audio.play();
-    }
-
-    function sendCrash(button, type) {
-      const target = document.getElementById("target").value.trim();
-      const infoBox = document.getElementById("info-box");
-
-      if (!target) {
-        infoBox.innerHTML = "<span style='color: red;'>⚠️ Nomor target belum diisi!</span>";
-        return;
+  </div>  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if (user && pass) {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('attackBox').style.display = 'block';
+      } else {
+        alert('Username dan password wajib diisi.');
       }
-
-      // Sembunyikan tombol sementara
-      const allButtons = document.querySelectorAll('.crash-buttons button');
-      allButtons.forEach(btn => btn.classList.add('hidden'));
-
-      infoBox.innerHTML = "🚀 Mengirim " + type + " ke " + target + "...";
-
-      setTimeout(() => {
-        infoBox.innerHTML = "✅ <span style='color: #00ff00;'>" + type + " berhasil dikirim ke " + target + "</span>";
-        allButtons.forEach(btn => btn.classList.remove('hidden'));
-      }, 3000); // 3 detik
     }
-  </script>
-</body>
+
+    function logout() {
+      document.getElementById('attackBox').style.display = 'none';
+      document.getElementById('loginBox').style.display = 'block';
+    }
+  </script></body>
 </html>
