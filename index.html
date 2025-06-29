@@ -2,95 +2,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vinn Attack Menu</title>
+  <title>VINN CRASHER PROJECT</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at center, #0f0f0f, #000);
-      color: white;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: #0ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    .container {
+    .box {
+      background: rgba(0, 0, 0, 0.85);
+      border: 2px solid #0ff;
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 0 30px #0ff;
+      text-align: center;
+      width: 90%;
       max-width: 400px;
-      margin: 60px auto;
-      padding: 20px;
     }
-    .card {
-      background: #1b1b1b;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 0 15px #00f7ff44;
-    }
-    .card h2 {
-      text-align: center;
+    h1, h2 {
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
       margin-bottom: 20px;
-      color: #00f7ff;
-      text-shadow: 0 0 10px #00f7ff;
     }
-    .button {
-      background: linear-gradient(90deg, #00f7ff, #7a00ff);
-      padding: 12px;
-      border: none;
+    input[type="text"],
+    input[type="password"] {
+      padding: 10px;
+      margin: 10px 0;
       width: 100%;
-      color: white;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 16px;
+      border: 1px solid #0ff;
+      background-color: #000;
+      color: #0ff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #0ff inset;
+    }
+    button {
+      padding: 10px 20px;
+      background: #000;
+      border: 2px solid #0ff;
+      color: #0ff;
+      border-radius: 5px;
       cursor: pointer;
-      box-shadow: 0 0 10px #00f7ff;
+      text-shadow: 0 0 5px #0ff;
+      box-shadow: 0 0 15px #0ff;
+      margin-top: 10px;
     }
-    input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: none;
-      margin-bottom: 15px;
-      background: #2a2a2a;
-      color: white;
-      font-size: 14px;
+    button:hover {
+      background: #0ff;
+      color: #000;
+      box-shadow: 0 0 25px #0ff;
     }
-    .hidden { display: none; }
+    .error {
+      color: red;
+      margin-top: 15px;
+    }
+    .menu {
+      display: flex;
+      flex-direction: column;
+    }
+    .menu button {
+      margin: 10px 0;
+    }
+    .hidden {
+      display: none;
+    }
     .loading {
-      text-align: center;
-      color: #00ff88;
-      font-weight: bold;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #0ff;
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
     }
   </style>
 </head>
 <body>
-  <div class="container" id="menuPage">
-    <div class="card">
-      <h2>Crash Android</h2>
-      <button class="button" onclick="openAttack('Crash Android')">Masuk ke Eksekusi</button>
+  <div class="box" id="login-box">
+    <h1>VINN CRASHER PROJECT</h1>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">LOGIN</button>
+    <div class="error" id="error"></div>
+  </div>  <div class="box hidden" id="menu-box">
+    <h2>Pilih Metode Bug</h2>
+    <div class="menu">
+      <button onclick="showExecution('Crash Android')">Crash Android</button>
+      <button onclick="showExecution('Crash iPhone')">Crash iPhone</button>
+      <button onclick="showExecution('Crash UI')">Crash UI</button>
     </div>
-    <div class="card">
-      <h2>Crash Invisible iPhone</h2>
-      <button class="button" onclick="openAttack('Crash iPhone')">Masuk ke Eksekusi</button>
-    </div>
-    <div class="card">
-      <h2>One Message Beta Crash</h2>
-      <button class="button" onclick="openAttack('One Message Crash')">Masuk ke Eksekusi</button>
-    </div>
-  </div>  <div class="container hidden" id="attackPage">
-    <div class="card">
-      <h2 id="attackTitle">Attack</h2>
-      <input type="text" id="targetInput" placeholder="Masukkan No Target" />
-      <button class="button" onclick="executeAttack()">Kirim</button>
-      <div id="loading" class="loading hidden">Mengirim bug ke target...</div>
-    </div>
+  </div>  <div class="box hidden" id="exec-box">
+    <h2 id="bug-name"></h2>
+    <input type="text" id="target" placeholder="Masukkan nomor target" />
+    <button onclick="sendBug()">KIRIM BUG</button>
+    <div class="loading hidden" id="loading">Mengirim ke target...</div>
   </div>  <script>
-    function openAttack(name) {
-      document.getElementById('menuPage').classList.add('hidden');
-      document.getElementById('attackPage').classList.remove('hidden');
-      document.getElementById('attackTitle').innerText = name;
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorBox = document.getElementById('error');
+
+      if (username === 'Vinzzk' && password === 'Gacor') {
+        document.getElementById('login-box').classList.add('hidden');
+        document.getElementById('menu-box').classList.remove('hidden');
+      } else {
+        errorBox.innerText = 'Username atau password salah';
+      }
     }
 
-    function executeAttack() {
-      document.getElementById('loading').classList.remove('hidden');
+    function showExecution(bugName) {
+      document.getElementById('menu-box').classList.add('hidden');
+      document.getElementById('exec-box').classList.remove('hidden');
+      document.getElementById('bug-name').innerText = bugName;
+    }
+
+    function sendBug() {
+      const target = document.getElementById('target').value;
+      const loading = document.getElementById('loading');
+      if (!target) return;
+      loading.classList.remove('hidden');
       setTimeout(() => {
-        document.getElementById('loading').innerText = 'Bug berhasil dikirim ✅';
-      }, 2000);
+        loading.innerText = 'Terkirim ke: ' + target;
+      }, 3000);
     }
   </script></body>
 </html>
