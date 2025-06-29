@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VINN CRASHER</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      text-align: center;
+    }
+    .neon-title {
+      font-size: 2em;
+      margin: 30px 0;
+      color: #ff3c3c;
+      text-shadow: 0 0 10px #ff3c3c, 0 0 20px #ff3c3c;
+    }
+    .container {
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background: #111;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ff3c3c40;
+    }
+    input, button, select {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      background: #222;
+      border: none;
+      color: #fff;
+      font-size: 1em;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #ff3c3c;
+      box-shadow: 0 0 10px #ff3c3c;
+      cursor: pointer;
+    }
+    #loading {
+      display: none;
+      color: #ff3c3c;
+      margin-top: 20px;
+      text-shadow: 0 0 5px #ff3c3c;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="login-page" class="container">
+    <h2 class="neon-title">VINN CRASHER - LOGIN</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div id="login-error" style="color:red; display:none;">Username atau Password salah!</div>
+  </div>
+
+  <div id="menu-page" class="container" style="display:none;">
+    <h2 class="neon-title">Menu Attack</h2>
+    <button onclick="selectBug('Crash Android')">Crash Android</button>
+    <button onclick="selectBug('Crash iPhone')">Crash iPhone</button>
+    <button onclick="selectBug('Crash UI')">Crash UI</button>
+  </div>
+
+  <div id="execute-page" class="container" style="display:none;">
+    <h2 class="neon-title" id="bug-title">Metode</h2>
+    <input type="text" id="target-number" placeholder="Masukkan Nomor Target (62...)">
+    <button onclick="executeBug()">Kirim Bug</button>
+    <div id="loading">⏳ Mengirim bug ke target...</div>
+    <div id="done-msg" style="color:#0f0; display:none;">✅ Bug Terkirim!</div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (user === "Vinzzk" && pass === "Gacor") {
+        document.getElementById("login-page").style.display = "none";
+        document.getElementById("menu-page").style.display = "block";
+      } else {
+        document.getElementById("login-error").style.display = "block";
+      }
+    }
+
+    let selectedBug = "";
+    function selectBug(bugName) {
+      selectedBug = bugName;
+      document.getElementById("menu-page").style.display = "none";
+      document.getElementById("execute-page").style.display = "block";
+      document.getElementById("bug-title").textContent = bugName;
+    }
+
+    function executeBug() {
+      const number = document.getElementById("target-number").value;
+      if (!number.startsWith("62")) {
+        alert("Nomor harus diawali dengan 62");
+        return;
+      }
+
+      document.getElementById("loading").style.display = "block";
+      document.getElementById("done-msg").style.display = "none";
+
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("done-msg").style.display = "block";
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
