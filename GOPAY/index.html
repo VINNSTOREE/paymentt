@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pembayaran GoPay</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: radial-gradient(circle, #0f0c29, #302b63, #24243e);
+      color: white;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 2rem;
+      border: 1px solid #0ff;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #0ff;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+    }
+    img {
+      width: 250px;
+      border: 2px solid #0ff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0ff;
+    }
+    .status {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #0ff;
+    }
+    .nomor {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .copy-btn {
+      margin-top: 10px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      background: #0ff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #0ff;
+      transition: 0.3s;
+    }
+    .copy-btn:hover {
+      background: #00ccff;
+      box-shadow: 0 0 15px #0ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Scan GoPay untuk Membayar</h2>
+    <img src="../-media-/gopay.png" alt="Gopay QR" />
+    <p class="nomor" id="nomorGopay">Nomor GoPay: 081224583364</p>
+    <button class="copy-btn" onclick="copyNomor()">📋 Salin Nomor</button>
+    <p class="status">📸 Sertakan Bukti Transfer</p>
+  </div>
+
+  <script>
+    function copyNomor() {
+      const nomor = "081224583364";
+      navigator.clipboard.writeText(nomor).then(function() {
+        alert("Nomor GoPay berhasil disalin!");
+      }, function(err) {
+        alert("Gagal menyalin nomor.");
+      });
+    }
+  </script>
+</body>
+</html>
